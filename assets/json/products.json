@@ -1,0 +1,138 @@
+[
+ {
+  "id" : 1,
+  "name" : "APPLE Iphone 14 Plus 6/128GB",
+  "image":{
+   "src":"../img/iphone1.jpg",
+   "alt":"iphone"
+   },
+   "price":{
+   "old": 1500,
+   "new": 1450
+   },
+   "brend":1,
+   "memorija": 2,
+   "stars":5
+ },
+ {
+  "id" : 2,
+  "name" : "SAMSUNG Galaxy S23 Ultra 8/256GB Cream",
+  "image":{
+   "src":"../img/samsung1.jpg",
+   "alt":"iphone"
+   },
+   "price":{
+   "old": 1350,
+   "new": 1300
+   },
+   "brend": 3,
+   "memorija": 1,
+   "stars":4.5
+ },
+ {
+  "id" : 3,
+  "name" : "HUAWEI Nova 10 8/128GB Black",
+  "image":{
+   "src":"../img/huawei1.png",
+   "alt":"iphone"
+   },
+   "price":{
+   "old": 630,
+   "new": 595
+   },
+   "brend": 2,
+   "memorija": 1,
+   "stars":4.5
+ },
+ {
+  "id" : 4,
+  "name" : "REALME 10 4G 6/128GB Black",
+  "image":{
+   "src":"../img/realme3.jpg",
+   "alt":"iphone"
+   },
+   "price":{
+   "old": null,
+   "new": 280
+   },
+   "brend": 5,
+   "memorija": 1,
+   "stars": 3
+ },
+ {
+  "id" : 5,
+  "name" : " APPLE Iphone 13 6/128GB Blue",
+  "image":{
+   "src":"../img/iphone2.jpg",
+   "alt":"iphone"
+   },
+   "price":{
+   "old": null,
+   "new": 1100
+   },
+   "brend":1,
+   "memorija": 1,
+   "stars":4
+ },
+ {
+  "id" : 6,
+  "name" : "SAMSUNG Galaxy S22 Black 128GB",
+  "image":{
+   "src":"../img/samsung2.png",
+   "alt":"iphone"
+   },
+   "price":{
+   "old": null,
+   "new": 760
+   },
+   "brend": 3,
+   "memorija": 1,
+   "stars": 4
+ },
+ {
+  "id" : 7,
+  "name" : "HUAWEI Nova Y61 4/64GB Black ",
+  "image":{
+   "src":"../img/huawei2.jpg",
+   "alt":"iphone"
+   },
+   "price":{
+   "old": 190,
+   "new": 180
+   },
+   "brend": 2,
+   "memorija": 3,
+   "stars": 3.5
+ },
+ {
+  "id" : 8,
+  "name" : "SAMSUNG Galaxy Z Flip4 8/256GB Blue",
+  "image":{
+   "src":"../img/samsung3.png",
+   "alt":"iphone"
+   },
+   "price":{
+   "old": 1100,
+   "new": 1000
+   },
+   "brend": 3,
+   "memorija": 1,
+   "stars":5
+ },
+ {
+  "id" : 9,
+  "name" : "REALME C35 4/64GB Dark Green",
+  "image":{
+   "src":"../img/realme2.png",
+   "alt":"iphone"
+   },
+   "price":{
+   "old": 460,
+   "new": 400
+   },
+   "brend": 5,
+   "memorija": 3,
+   "stars":3
+ }
+
+]

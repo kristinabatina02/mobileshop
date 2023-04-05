@@ -1,0 +1,49 @@
+*{
+ margin: 0;
+ padding: 0;
+ }
+ .carousel-item{
+ height: 90vh !important;
+ }
+ .carousel-item img{
+ object-position: center !important;
+ }
+ /* .dark-navy{
+ background-color: --bs-body-color !important;
+ } */
+ a{
+ color: #fff !important;
+ }
+ .w-100{
+ width: 100% !important;
+ }
+ .card{
+ height: 400px !important;
+ }
+ #sortingPanel{
+ margin-top: 100px !important;
+ }
+ #cart{
+ margin-top: 70px !important;
+ }
+ .team-members{
+ margin-top: 70px !important
+ }
+ #contact-form{
+ margin-top: 80px !important
+ }
+ .gre{
+ border: 1px solid #ff0000 !important
+ }
+ .uspesno{
+  border: 1px solid #00FF00 !important;
+  }
+  .greska{
+  font-size: 12px !important;
+  color: #ff0000 !important;
+  }
+
+  #korpa-form{
+  margin-top: 100px !important;
+  }
+  
