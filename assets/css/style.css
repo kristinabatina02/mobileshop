@@ -17,10 +17,8 @@
  .w-100{
  width: 100% !important;
  }
- .card{
- height: 400px !important;
- }
- #sortingPanel{
+ 
+ #sortiranje{
  margin-top: 100px !important;
  }
  #cart{

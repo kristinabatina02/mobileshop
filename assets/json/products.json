@@ -1,10 +1,10 @@
 [
  {
   "id" : 1,
-  "name" : "APPLE Iphone 14 Plus 6/128GB",
+  "name" : "APPLE Iphone 14 Plus 6/128GB Purple",
   "image":{
    "src":"../img/iphone1.jpg",
-   "alt":"iphone"
+   "alt":"iphone 14"
    },
    "price":{
    "old": 1500,
@@ -19,7 +19,7 @@
   "name" : "SAMSUNG Galaxy S23 Ultra 8/256GB Cream",
   "image":{
    "src":"../img/samsung1.jpg",
-   "alt":"iphone"
+   "alt":"samsung s23"
    },
    "price":{
    "old": 1350,
@@ -27,14 +27,14 @@
    },
    "brend": 3,
    "memorija": 1,
-   "stars":4.5
+   "stars": 5
  },
  {
   "id" : 3,
   "name" : "HUAWEI Nova 10 8/128GB Black",
   "image":{
    "src":"../img/huawei1.png",
-   "alt":"iphone"
+   "alt":"huawei 10"
    },
    "price":{
    "old": 630,
@@ -46,47 +46,47 @@
  },
  {
   "id" : 4,
-  "name" : "REALME 10 4G 6/128GB Black",
+  "name" : "Realme 10 4G 6/128GB Rush Black",
   "image":{
    "src":"../img/realme3.jpg",
-   "alt":"iphone"
+   "alt":"realme 10"
    },
    "price":{
    "old": null,
    "new": 280
    },
    "brend": 5,
-   "memorija": 1,
-   "stars": 3
+   "memorija": 2,
+   "stars": 3.5
  },
  {
   "id" : 5,
-  "name" : " APPLE Iphone 13 6/128GB Blue",
+  "name" : " APPLE iPhone 13 4/128GB Blue",
   "image":{
    "src":"../img/iphone2.jpg",
-   "alt":"iphone"
+   "alt":"iphone 13"
    },
    "price":{
    "old": null,
    "new": 1100
    },
    "brend":1,
-   "memorija": 1,
+   "memorija": 3,
    "stars":4
  },
  {
   "id" : 6,
-  "name" : "SAMSUNG Galaxy S22 Black 128GB",
+  "name" : "SAMSUNG Galaxy A14 4/128GB Black",
   "image":{
-   "src":"../img/samsung2.png",
-   "alt":"iphone"
+   "src":"../img/samsungA14.jpg",
+   "alt":"samsung a14"
    },
    "price":{
    "old": null,
-   "new": 760
+   "new": 222
    },
    "brend": 3,
-   "memorija": 1,
+   "memorija": 3,
    "stars": 4
  },
  {
@@ -94,7 +94,7 @@
   "name" : "HUAWEI Nova Y61 4/64GB Black ",
   "image":{
    "src":"../img/huawei2.jpg",
-   "alt":"iphone"
+   "alt":"huawei y61"
    },
    "price":{
    "old": 190,
@@ -102,14 +102,14 @@
    },
    "brend": 2,
    "memorija": 3,
-   "stars": 3.5
+   "stars": 3
  },
  {
   "id" : 8,
   "name" : "SAMSUNG Galaxy Z Flip4 8/256GB Blue",
   "image":{
    "src":"../img/samsung3.png",
-   "alt":"iphone"
+   "alt":"samsung galaxy z flip"
    },
    "price":{
    "old": 1100,
@@ -117,14 +117,14 @@
    },
    "brend": 3,
    "memorija": 1,
-   "stars":5
+   "stars": 4.5
  },
  {
   "id" : 9,
-  "name" : "REALME C35 4/64GB Dark Green",
+  "name" : "Realme C35 4/64GB Glowing Green",
   "image":{
    "src":"../img/realme2.png",
-   "alt":"iphone"
+   "alt":"realme c35"
    },
    "price":{
    "old": 460,
@@ -133,6 +133,52 @@
    "brend": 5,
    "memorija": 3,
    "stars":3
+ },
+ {
+  "id" : 10,
+  "name" : "SAMSUNG Galaxy A33 6/128GB Blue",
+  "image":{
+   "src":"../img/samsungA33.jpg",
+   "alt":"samsung a33"
+   },
+   "price":{
+   "old": 370,
+   "new": 325
+   },
+   "brend": 3,
+   "memorija": 2,
+   "stars":3.5
+ },
+ {
+  "id" : 10,
+  "name" : "HUAWEI Nova Y90 6/128GB Blue",
+  "image":{
+   "src":"../img/huawei3.png",
+   "alt":"huawei y90"
+   },
+   "price":{
+   "old": null,
+   "new": 300
+   },
+   "brend": 2,
+   "memorija": 2,
+   "stars":3
+ },
+ {
+  "id" : 11,
+  "name" : "REALME 9 Pro 6/128GB Glowing Green",
+  "image":{
+   "src":"../img/realme4.png",
+   "alt":"realme 9 pro"
+   },
+   "price":{
+   "old": 380,
+   "new": 340
+   },
+   "brend": 5,
+   "memorija": 2,
+   "stars":3.5
  }
+
 
 ]

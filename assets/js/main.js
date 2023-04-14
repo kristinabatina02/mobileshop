@@ -49,9 +49,12 @@ function dohvatiIzLS(name) {
  return JSON.parse(localStorage.getItem(name));
 }
 
-function UkloniIzLS(name) {
+function ukloniIzLS(name) {
  return localStorage.removeItem(name);
 }
+function imaUKorpi() {
+  return dohvatiIzLS("proizvodi");
+ }
 
 function prikaziNavigaciju(sviProizvodi) {
  let html = "";
@@ -62,10 +65,6 @@ function prikaziNavigaciju(sviProizvodi) {
    meni.push(el);
  });
  $("#meni").html(html);
-}
-
-function imaUKorpi() {
- return uzmiIzLS("proizvodi");
 }
 
 function validacija(reg, el, greska, poruka) {
@@ -119,9 +118,9 @@ window.onload = function(){
              <h6 class="card-title fw-bold">
                ${el.name}
              </h6>
-           <p class="card-text text-center fw-bold">$${el.price.new}</p>
+           <p class="card-text text-center">${ispisiCenu(el.price)}</p>
          </div>
-         <a href="shop.html"><button type="button" class="btn btn-primary btn-sm">Idi na shop</button></a>
+         <a href="shop.html"><button type="button" class="btn btn-primary btn-sm mb-3">Idi na shop</button></a>
        </div>`;
       
     }
@@ -166,6 +165,7 @@ window.onload = function(){
       $("#memorije").html(html);
       $('.memorija').change(filterChange);
     }
+    
    }
   }
 
@@ -203,10 +203,10 @@ window.onload = function(){
   let html = "";
 
     if(obj.old != null){
-        html += `<del>${obj.old}&euro;</del><br/>`;
+        html += `<del>${obj.old}&euro;</del>`;
     }
 
-    html += `<strong>${obj.new}&euro;</strong>`;
+    html += `<strong> &nbsp;${obj.new}&euro;</strong>`;
 
     return html;
  }
@@ -243,7 +243,7 @@ function filterByRamMemory(sviProizvodi){
         selektovaneMemorije.push(parseInt($(this).val()));
       });
       if (selektovaneMemorije.length != 0) {
-        return sviProizvodi.filter(x => x.memorija.some(y => selektovaneMemorije.includes(y)));
+        return sviProizvodi.filter(x => selektovaneMemorije.includes(x.memorija));	
       }
       return sviProizvodi;
 }
@@ -326,6 +326,7 @@ function azurirajKolicinu(id) {
   postaviULS("proizvodi", proizvodiLS );
 }
 
+if (url == "/cart.html"){
 function prikaziKorpu() {
   let html = `
     <div id="orderTable">
@@ -380,7 +381,7 @@ function prikaziKorpu() {
 
   $("#korpa").html(html);
   $("#kupi").click(validirajKarticu);
-  $("#ukloni").click(ukloni);
+  $("#ukloni").click(ukloniSve);
 
 }
 function ukupno(sviProizvodi) {
@@ -411,14 +412,14 @@ function prikaziPraznuKorpu() {
   $("#korpa").html("<p class='text-center p-5 alert-danger'>Nema nijedan proizvod u korpi</p>");
 }
 
-function ukloni() {
-  UkloniIzLS("proizvodi");
+function ukloniSve() {
+  ukloniIzLS("proizvodi");
   location.reload();
 }
 
 function azuriraj() {
-  var proizvodiSuma = document.querySelectorAll(".productSum");
-  var cena = document.querySelectorAll(".cena");
+  var proizvodiSuma = document.querySelectorAll(".proizvodiSuma");
+  var cena = document.querySelectorAll(".price");
   var kolicinaSum = document.querySelectorAll(".kolicinaInput");
   var ukupnaSuma = document.querySelector("#ukupno");
   var ukupnaKolicinaZaJedan = 0;
@@ -433,7 +434,7 @@ function azuriraj() {
 
 function promeniKolicinu() {
   if (this.value > 0) {
-    update();
+    azuriraj();
   }
   else {
     this.value = 1;
@@ -478,5 +479,5 @@ function kupi(){
     $("#korpa").html("<p class='alert-success p-5'>Vaša porudžbina je kreirana</p>");
  }
  
-
+}
 
