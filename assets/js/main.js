@@ -31,6 +31,9 @@ function ajaxCallBack(imeFajla, ispis){
   }
  })
 }
+
+//dohvatanje proizvoda
+
 function dohvatiSveProizvode(sviProizvodi) {
   sviProizvodi.forEach(el => {
    sviProizvodi.push(el);
@@ -54,7 +57,9 @@ function ukloniIzLS(name) {
 }
 function imaUKorpi() {
   return dohvatiIzLS("proizvodi");
- }
+}
+
+//prikaz navigacije
 
 function prikaziNavigaciju(sviProizvodi) {
  let html = "";
@@ -81,6 +86,7 @@ function validacija(reg, el, greska, poruka) {
  }
 }
 
+//regularni izrazi
 var regIme = /^[A-ZČĆŠĐŽ][a-zčćšđž]{2,14}(\s[A-ZČĆŠĐŽ][a-zčćšđž]{2,14})*$/;
 var regEmail = /^[\w\.\-]+\@([a-z0-9]+\.)+[a-z]{2,3}$/;
 var regNaslov = /^([1-zćčžđšA-ZČĆŠĐŽ0-1@.\s]{2,5})$/;
@@ -98,12 +104,12 @@ window.onload = function(){
  ajaxCallBack("navigation.json", prikaziNavigaciju);
  ajaxCallBack("products.json", dohvatiSveProizvode);
  
-//  if (url == "/" || url == "/index.html" || url == "/korpa.html" || url == "/contact.html" || url == "/autor.html"){
-//   ajaxCallBack("navigation.json", prikaziNavigaciju);
-//  }
+
  
- if (url == "/" || url == "/index.html") {
-  ajaxCallBack("products.json", prikaziTopProizvode);
+ if (url == "https://kristinabatina02.github.io/mobileshop" || url == "https://kristinabatina02.github.io/mobileshop/index.html") {
+  
+ //top proizvodi
+  ajaxCallBack("products.json", prikaziTopProizvode)
   function prikaziTopProizvode(sviProizvodi) {
    let html = "";
    let sortirano = [];
@@ -126,10 +132,10 @@ window.onload = function(){
     }
    $("#topProizvodi").html(html);
  }
- }
+}
 
 
- if (url == "/shop.html") {
+ if (url == "https://kristinabatina02.github.io/mobileshop/shop.html") {
   ajaxCallBack("products.json", prikaziProizvode);
   ajaxCallBack("memory.json", prikaziMemorije);
   ajaxCallBack("brend.json", prikaziBrendove);
@@ -326,7 +332,7 @@ function azurirajKolicinu(id) {
   postaviULS("proizvodi", proizvodiLS );
 }
 
-if (url == "/cart.html"){
+if (url == "https://kristinabatina02.github.io/mobileshop/korpa.html"){
 function prikaziKorpu() {
   let html = `
     <div id="orderTable">
