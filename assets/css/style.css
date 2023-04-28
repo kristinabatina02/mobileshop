@@ -2,46 +2,46 @@
  margin: 0;
  padding: 0;
  }
- .carousel-item{
+.carousel-item{
  height: 90vh !important;
- }
- .carousel-item img{
- object-position: center !important;
- }
- /* .dark-navy{
- background-color: --bs-body-color !important;
- } */
- a{
+}
+.carousel-item img{
+ background-position: center !important;
+}
+a{
  color: #fff !important;
- }
- .w-100{
+}
+.w-100{
  width: 100% !important;
- }
- 
- #sortiranje{
- margin-top: 100px !important;
- }
- #cart{
- margin-top: 70px !important;
- }
- .team-members{
- margin-top: 70px !important
- }
- #contact-form{
- margin-top: 80px !important
- }
- .gre{
- border: 1px solid #ff0000 !important
- }
- .uspesno{
-  border: 1px solid #00FF00 !important;
-  }
-  .greska{
-  font-size: 12px !important;
-  color: #ff0000 !important;
-  }
+}
 
-  #korpa-form{
-  margin-top: 100px !important;
-  }
+#sortiranje{
+ margin-top: 100px !important;
+}
+#cart{
+ margin-top: 70px !important;
+}
+
+
+.greska{
+ color: #ff0000;
+}
+.prikaziGresku{
+ display: block;
+}
+.sakrijGresku{
+ display: none;
+}
+.uspesno{
+ color: #000;
+ padding-top: 10px;
+}
+.sakrijUspesno{
+ display: none;
+}
+
+#korpa-form{
+ margin-top: 100px !important;
+}
+
   

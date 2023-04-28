@@ -2,8 +2,9 @@ var meni = [];
 var sviProizvodi = [];
 var brend = [];
 var memorija = [];
-var url = window.location.href;
+var url = document.location.pathname;
 
+//funkcija za dohvatanje json fajlova
 function ajaxCallBack(imeFajla, ispis){
  $.ajax({
      url:"assets/json/" + imeFajla,
@@ -28,9 +29,11 @@ function ajaxCallBack(imeFajla, ispis){
       por = 'Neuhvaćena greška.\n' + jqXHR.responseText;
       }
       
-  }
+    }
  })
 }
+
+
 
 //dohvatanje proizvoda
 
@@ -38,13 +41,12 @@ function dohvatiSveProizvode(sviProizvodi) {
   sviProizvodi.forEach(el => {
    sviProizvodi.push(el);
  });
-
  postaviULS("sviProizvodi", sviProizvodi);
 }
 
 //funkcije za ls 
 
-function postaviULS(name, sviProizvodi) {
+function postaviULS(name, sviProizvodi){
  localStorage.setItem(name, JSON.stringify(sviProizvodi));
 }
 
@@ -56,100 +58,100 @@ function ukloniIzLS(name) {
  return localStorage.removeItem(name);
 }
 function imaUKorpi() {
-  return dohvatiIzLS("proizvodi");
+  return dohvatiIzLS("products");
 }
 
 //prikaz navigacije
 
 function prikaziNavigaciju(sviProizvodi) {
- let html = "";
- sviProizvodi.forEach(el => {
-   html += `<li class="nav-item">
-     <a class="nav-link" href="${el.href}">${el.naziv}</a>
-   </li>`;
-   meni.push(el);
- });
- $("#meni").html(html);
-}
-
-function validacija(reg, el, greska, poruka) {
- if (!$(el).val().match(reg)) {
-   $(el).addClass("gre");
-   $(greska).html(poruka);
-   return false;
+  let html = "";
+  sviProizvodi.forEach(el => {
+    html += `<li class="nav-item">
+      <a class="nav-link" href="${el.href}">${el.naziv}</a>
+    </li>`;
+    meni.push(el);
+  });
+  $("#meni").html(html);
  }
- else {
-   $(el).removeClass("gre");
-   $(el).addClass("uspesno");
-   $(greska).html("");
-   return true;
- }
-}
+ 
+//obrada forme
+// function validacija(reg, element, greska, poruka) {
+//  if (!$(element).val().match(reg)) {
+//    $(element).addClass("gre");
+//    $(greska).html(poruka);
+//    return false;
+//  }
+//  else {
+//    $(element).removeClass("gre");
+//    $(element).addClass("uspesno");
+//    $(greska).html("");
+//    return true;
+//  }
+// }
 
-//regularni izrazi
-var regIme = /^[A-ZČĆŠĐŽ][a-zčćšđž]{2,14}(\s[A-ZČĆŠĐŽ][a-zčćšđž]{2,14})*$/;
-var regEmail = /^[\w\.\-]+\@([a-z0-9]+\.)+[a-z]{2,3}$/;
-var regNaslov = /^([1-zćčžđšA-ZČĆŠĐŽ0-1@.\s]{2,5})$/;
-var regAdresa = /^([A-ZČĆŠĐŽ]|[1-9]{1,5})[A-ZČĆŠĐŽa-zčćšđž\d\-\.\s]+$/;
-var regPoruka = /^([1-zćčžđšA-ZČĆŠĐŽ0-1@.\s]{19,100})$/;
-var regKreditnaKartica = /^[0-9]{16}$/;
-var porukaIme = "Neispravno ime. Primer: Pera";
-var porukaEmail = "Neispravan email. Primer: pera.peric@gmail.com";
-var porukaNaslov = "Naslov mora sadržati bar 5 karaktera";
-var porukaPoruka = "Poruka može sadržati bar 20 karaktera";
-var porukaAdresa = "Please eneter your address";
-var porukaKreditnaKartica = "Credit card contains 16 digits";
+// //regularni izrazi
+// var regIme = /^[A-ZČĆŠĐŽ][a-zčćšđž]{2,14}(\s[A-ZČĆŠĐŽ][a-zčćšđž]{2,14})*$/;
+// var regEmail = /^[\w\.\-]+\@([a-z0-9]+\.)+[a-z]{2,3}$/;
+// var regNaslov = /^([1-zćčžđšA-ZČĆŠĐŽ0-1@.\s]{2,5})$/;
+// var regAdresa = /^([A-ZČĆŠĐŽ]|[1-9]{1,5})[A-ZČĆŠĐŽa-zčćšđž\d\-\.\s]+$/;
+// var regPoruka = /^([1-zćčžđšA-ZČĆŠĐŽ0-1@.\s]{19,100})$/;
+// var regKreditnaKartica = /^[0-9]{16}$/;
+// var porukaIme = "Neispravno ime. Primer: Pera";
+// var porukaEmail = "Neispravan email. Primer: pera.peric@gmail.com";
+// var porukaNaslov = "Naslov mora sadržati bar 5 karaktera";
+// var porukaPoruka = "Poruka može sadržati bar 20 karaktera";
+// var porukaAdresa = "Niste uneli adresu";
+// var porukaKreditnaKartica = "Kreditna kartica mora sadržati 16 cifara";
+
 
 window.onload = function(){
- ajaxCallBack("navigation.json", prikaziNavigaciju);
- ajaxCallBack("products.json", dohvatiSveProizvode);
+  ajaxCallBack("navigation.json", prikaziNavigaciju);
+  ajaxCallBack("products.json", dohvatiSveProizvode);
  
-//  if (url == "/" || url == "/index.html" || url == "/korpa.html" || url == "/contact.html" || url == "/autor.html"){
-//   ajaxCallBack("navigation.json", prikaziNavigaciju);
-//  }
  
- if (url == "https://kristinabatina02.github.io/mobileshop/" || url == "https://kristinabatina02.github.io/mobileshop/index.html") {
+  if (url == "/" || url == "/index.html") {
   
   //prikaz top proizvoda
 
-  ajaxCallBack("products.json", prikaziTopProizvode)
-  function prikaziTopProizvode(sviProizvodi) {
-   let html = "";
-   let sortirano = [];
-   sortirano = sviProizvodi.sort(function(a,b){
-    return b.stars - a.stars
-   })
-   let top = sortirano.slice(0,4)
-   for(let el of top){
-       html += `<div class="card d-flex align-items-center col-md-3">
-         <img class="card-img-top" src="assets/img/${el.image.src}" alt="${el.image.alt}">
-         <div class="card-body">
-             <h6 class="card-title fw-bold">
-               ${el.name}
-             </h6>
-           <p class="card-text text-center">${ispisiCenu(el.price)}</p>
-         </div>
-         <a href="shop.html"><button type="button" class="btn btn-primary btn-sm mb-3">Idi na shop</button></a>
-       </div>`;
-      
+    ajaxCallBack("products.json", prikaziTopProizvode);
+
+    function prikaziTopProizvode(sviProizvodi) {
+    let html = "";
+    let sortirano = [];
+    sortirano = sviProizvodi.sort(function(a,b){
+      return b.stars - a.stars
+    })
+    let top = sortirano.slice(0,4)
+    for(let el of top){
+        html += `<div class="card d-flex align-items-center col-md-3">
+          <img class="card-img-top" src="assets/img/${el.image.src}" alt="${el.image.alt}">
+          <div class="card-body">
+              <h6 class="card-title fw-bold">
+                ${el.name}
+              </h6>
+            <p class="card-text text-center">${ispisiCenu(el.price)}</p>
+          </div>
+          <a href="shop.html"><button type="button" class="btn btn-primary btn-sm mb-3">Idi na shop</button></a>
+        </div>`;
+        
+      }
+    $("#topProizvodi").html(html);
     }
-   $("#topProizvodi").html(html);
- }
-}
-
-
- if (url == "https://kristinabatina02.github.io/mobileshop/shop.html") {
-  ajaxCallBack("products.json", prikaziProizvode);
-  ajaxCallBack("memory.json", prikaziMemorije);
-  ajaxCallBack("brend.json", prikaziBrendove);
-  
-
-  $("#sort").change(filterChange);
-  $("#search").keyup(filterChange);
-
-  function filterChange() {
-    ajaxCallBack("products.json", prikaziProizvode);
   }
+
+
+  if (url == "/shop.html") {
+    ajaxCallBack("products.json", prikaziProizvode);
+    ajaxCallBack("memory.json", prikaziMemorije);
+    ajaxCallBack("brend.json", prikaziBrendove);
+    
+
+    $("#sort").change(filterChange);
+    $("#search").keyup(filterChange);
+
+    function filterChange() {
+      ajaxCallBack("products.json", prikaziProizvode);
+    }
 
     function prikaziBrendove(sviProizvodi) {
       let html = "";
@@ -176,7 +178,7 @@ window.onload = function(){
     }
     
    }
-  }
+
 
   function prikaziProizvode(sviProizvodi) {
    sviProizvodi = filterByBrend(sviProizvodi);
@@ -291,7 +293,7 @@ function search(sviProizvodi) {
 
 
 function dodajUKorpu() {
-  var id = $(this).sviProizvodi('id');
+  var id = $(this).data('id');
   var proizvodiLS = imaUKorpi();
   if (!proizvodiLS) {
     let proizvodiLS = [];
@@ -299,7 +301,8 @@ function dodajUKorpu() {
       id: id,
       kolicina: 1
     };
-    postaviULS("proizvodi", proizvodiLS);
+    postaviULS("products", proizvodiLS);
+    console.log(proizvodiLS);
   }
   else {
     if (!pronadjiULS(proizvodiLS, id)) {
@@ -322,7 +325,7 @@ function dodajULS(id) {
     id: id,
     kolicina: 1
   });
-  postaviULS("proizvodi", proizvodiLS);
+  postaviULS("products", proizvodiLS);
 }
 
 
@@ -332,10 +335,10 @@ function azurirajKolicinu(id) {
     if (el.id == id)
       el.kolicina++;
   });
-  postaviULS("proizvodi", proizvodiLS );
+  postaviULS("products", proizvodiLS);
 }
 
-if (url == "https://kristinabatina02.github.io/mobileshop/korpa.html"){
+if (url == "/korpa.html"){
 function prikaziKorpu() {
   let html = `
     <div id="orderTable">
@@ -350,7 +353,7 @@ function prikaziKorpu() {
       </tr>
     </thead>`;
 
-  let proizvodiLS = dohvatiIzLS("proizvodi");
+  let proizvodiLS = dohvatiIzLS("products");
   var proizvodi = dohvatiIzLS("sviProizvodi");
   
 
@@ -367,13 +370,13 @@ function prikaziKorpu() {
       <tr>
         <td><p>${el.name}</h5></p>
         <td>
-          <img src="${el.image.src}" alt="${el.image.alt}" class="img-thumbnail" width="100"/>
+          <img src="assets/img/${el.image.src}" alt="${el.image.alt}" class="img-thumbnail" width="100"/>
         </td>
-        <td class="cena">$${el.price.new}</td>
+        <td class="cena">${el.price.new} &euro;</td>
         <td class="kolicina">
           <input class="formcontrol kolicinaInput" type="number" value="${el.kolicina}">
         </td>
-        <td class="proizvodUkupno">${parseFloat(el.price.new * el.kolicina)} $</td>
+        <td class="proizvodUkupno">${parseFloat(el.price.new * el.kolicina)} &euro;</td>
       </tr>
     </tbody>`;
   });
@@ -382,8 +385,8 @@ function prikaziKorpu() {
           </div>
             <div class="container">
             <div class="row d-flex justify-content-end" id="control">
-              <p id="ukupnaSuma" class="m-2">Ukupno: ${ukupno(proizvodi)}$</p>
-              <button id="kupi" class="btn btn-primary m2">Kupi</button>
+              <p id="ukupnaSuma" class="m-2">Ukupna suma:${ukupno(proizvodi)}&euro;</p>
+              <button id="kupi" class="btn btn-primary m-2">Kupi</button>
               <button id="ukloniSve" class="btn btn-danger m-2">Ukloni</button>
             </div>
        </div>`;
@@ -393,15 +396,15 @@ function prikaziKorpu() {
   $("#ukloniSve").click(ukloniSve);
 
 }
-function ukupno(sviProizvodi) {
+function ukupno(proizvodi) {
   let zbir = 0;
-  sviProizvodi.forEach(el => {
+  proizvodi.forEach(el => {
     zbir += parseFloat(el.price.new * el.kolicina);
   });
   return zbir;
 }
 
-cekiraj(dohvatiIzLS("proizvodi"));
+cekiraj(dohvatiIzLS("products"));
 
 function cekiraj(proizvodiUKorpi) {
   if (proizvodiUKorpi) {
@@ -422,23 +425,23 @@ function prikaziPraznuKorpu() {
 }
 
 function ukloniSve() {
-  ukloniIzLS("proizvodi");
+  ukloniIzLS("products");
   location.reload();
 }
 
 function azuriraj() {
-  var proizvodiSuma = document.querySelectorAll(".proizvodiSuma");
+  var proizvodiSuma = document.querySelectorAll(".proizvodUkupno");
   var cena = document.querySelectorAll(".price");
   var kolicinaSum = document.querySelectorAll(".kolicinaInput");
-  var ukupnaSuma = document.querySelector("#ukupno");
-  var ukupnaKolicinaZaJedan = 0;
+  var ukupnaSuma = document.querySelector("#ukupnaSuma");
+  var ukupnaKolicinaZaJedanProizvod = 0;
   for (let i = 0; i < cena.length; i++) {
-    var jednaCena = cena[i].innerHTML.replace('$', '');
-    proizvodiSuma[i].innerHTML = (Number(jednaCena) * Number(kolicinaSum[i].value)).toFixed(2) + "$";
+    var jednaCena = cena[i].innerHTML.replace('&euro;', '');
+    proizvodUkupno[i].innerHTML = (Number(jednaCena) * Number(kolicinaSum[i].value)).toFixed(2) + "&euro;";
 
-    ukupnaKolicinaZaJedan += Number(jednaCena) * Number(kolicinaSum[i].value);
+    ukupnaKolicinaZaJedanProizvod += Number(jednaCena) * Number(kolicinaSum[i].value);
   }
-  ukupnaSuma.innerHTML = "Ukupna suma:" + parseFloat(ukupnaKolicinaZaJedan).toFixed(2) + "&euro;";
+  ukupnaSuma.innerHTML = "Ukupna suma:" + parseFloat(ukupnaKolicinaZaJedanProizvod).toFixed(2) + "&euro;";
 }
 
 function promeniKolicinu() {
@@ -450,31 +453,31 @@ function promeniKolicinu() {
   }
 }
 
-$("#ime").blur(function () {
-  validateInput(regIme, "#ime", "#greskaIme", porukaIme);
+$("#ime").blur(function() {
+  validacija(regIme, "#ime", "#greskaIme", porukaIme);
 });
 
 $("#adresa").blur(function () {
-  validateInput(regAdresa, "#adresa", "#greskaAdresa", porukaAdresa);
+  validacija(regAdresa, "#adresa", "#greskaAdresa", porukaAdresa);
 });
 
 $("#kreditnaKartica").blur(function () {
-  validateInput(regKreditnaKartica, "#kreditnaKartica", "#greskaKreditnaKartica", porukaKreditnaKartica);
+  validacija(regKreditnaKartica, "#kreditnaKartica", "#greskaKreditnaKartica", porukaKreditnaKartica);
 });
 
 function validirajKarticu(){
-  var greske = 0;
-  if(!validateInput(regName, "#ime", "#greskaIme", porukaIme)){
-    greske++;
+  var greske2 = 0;
+  if(!validacija(regName, "#ime", "#greskaIme", porukaIme)){
+    greske2++;
   }
-  if(!validateInput(regAdresa, "#adresa", "#greskaAdresa", porukaAdresa)){
-    greske++;
+  if(!validacija(regAdresa, "#adresa", "#greskaAdresa", porukaAdresa)){
+    greske2++;
   }
-  if(!validateInput(regKreditnaKartica, "#kreditnaKartica", "#greskaKreditnaKartica", porukaKreditnaKartica)){
-    greske++;
+  if(!validacija(regKreditnaKartica, "#kreditnaKartica", "#greskaKreditnaKartica", porukaKreditnaKartica)){
+    greske2++;
   }
   else {
-    if(greske == 0){
+    if(greske2 == 0){
       return kupi();
     }
   }
@@ -483,10 +486,75 @@ function validirajKarticu(){
 }
 
 function kupi(){
-    localStorage.removeItem("proizvodi");
+    localStorage.removeItem("products");
     prikaziPraznuKorpu();
     $("#korpa").html("<p class='alert alert-success p-5'>Vaša porudžbina je kreirana</p>");
  }
- 
+
+ if(url == "contact.html"){
+  var reEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+var reIme = /^[A-ZŠĐŽČĆ][a-zšđčćž]{2,11}(\s[A-ZŠĐŽČĆ][a-zšđčćž]{2,11})*$/;
+var reNaslov = /(.{3})+/
+var rePoruka = /(.{10})+/
+
+var objIme = document.querySelector("#ime");
+    objIme.addEventListener("blur",function(){
+        proveraRegularnihIzraza(reIme,objIme);
+    })
+var objEmail = document.querySelector("#imejl");
+    objEmail.addEventListener("blur",function(){
+        proveraRegularnihIzraza(reEmail,objEmail);
+    })    
+var objNaslov = document.querySelector("#naslov");
+    objNaslov.addEventListener("blur",function(){
+        proveraRegularnihIzraza(reNaslov,objNaslov);
+    })
+
+    var objPoruka = document.querySelector("#poruka");
+    objPoruka.addEventListener("blur",function(){
+        proveraRegularnihIzraza(rePoruka,objPoruka);
+    })
+var dugme = document.getElementById("btn");
+dugme.addEventListener("click", kontaktObrada);
+function kontaktObrada(){
+    var greske = 0;
+    greske += proveraRegularnihIzraza(reIme,objIme);
+    greske += proveraRegularnihIzraza(reEmail,objEmail);
+    greske += proveraRegularnihIzraza(reNaslov,objNaslov);
+    greske += proveraRegularnihIzraza(rePoruka,objPoruka);
+    
+    if(!greske){
+        dugme.nextElementSibling.classList.remove("sakrijUspesno");
+        dugme.nextElementSibling.classList.add("uspesno");
+    }
+    else{
+        dugme.nextElementSibling.classList.remove("uspesno");
+        dugme.nextElementSibling.classList.add("sakrijUspesno");
+    }
 }
+
+
+function proveraRegularnihIzraza(re, obj){
+    if(re.test(obj.value)){
+        obj.nextElementSibling.classList.remove("prikaziGresku");
+        obj.nextElementSibling.classList.add("sakrijGresku");
+        return 0;
+    }
+    else{
+        obj.nextElementSibling.classList.remove("sakrijGresku");
+        obj.nextElementSibling.classList.add("prikaziGresku");
+        return 1;
+    }
+    
+  }
+ 
+  }
+
+}
+}
+
+
+
+
+
 
