@@ -2,7 +2,7 @@ var meni = [];
 var sviProizvodi = [];
 var brend = [];
 var memorija = [];
-var url = document.location.pathname;
+var url = window.location.href;
 
 //funkcija za dohvatanje json fajlova
 function ajaxCallBack(imeFajla, ispis){
@@ -109,7 +109,7 @@ window.onload = function(){
   ajaxCallBack("products.json", dohvatiSveProizvode);
  
  
-  if (url == "/" || url == "/index.html") {
+  if (url == "https://kristinabatina02.github.io/mobileshop/" || url == "https://kristinabatina02.github.io/mobileshop/index.html") {
   
   //prikaz top proizvoda
 
@@ -140,7 +140,7 @@ window.onload = function(){
   }
 
 
-  if (url == "/shop.html") {
+  if (url == "https://kristinabatina02.github.io/mobileshop/shop.html") {
     ajaxCallBack("products.json", prikaziProizvode);
     ajaxCallBack("memory.json", prikaziMemorije);
     ajaxCallBack("brend.json", prikaziBrendove);
@@ -338,7 +338,7 @@ function azurirajKolicinu(id) {
   postaviULS("products", proizvodiLS);
 }
 
-if (url == "/korpa.html"){
+if (url == "https://kristinabatina02.github.io/mobileshop/korpa.html"){
 function prikaziKorpu() {
   let html = `
     <div id="orderTable">
