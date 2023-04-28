@@ -490,8 +490,9 @@ function kupi(){
     prikaziPraznuKorpu();
     $("#korpa").html("<p class='alert alert-success p-5'>Vaša porudžbina je kreirana</p>");
  }
+}
 
- if(url == "contact.html"){
+ if(url == "https://kristinabatina02.github.io/mobileshop/contact.html"){
   var reEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 var reIme = /^[A-ZŠĐŽČĆ][a-zšđčćž]{2,11}(\s[A-ZŠĐŽČĆ][a-zšđčćž]{2,11})*$/;
 var reNaslov = /(.{3})+/
@@ -551,7 +552,7 @@ function proveraRegularnihIzraza(re, obj){
   }
 
 }
-}
+
 
 
 
