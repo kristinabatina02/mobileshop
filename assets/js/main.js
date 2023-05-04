@@ -109,31 +109,10 @@ window.onload = function(){
 
 
   if (url == "https://kristinabatina02.github.io/mobileshop/shop.html") {
-    let favoriti = []
-    if(localStorage.getItem("favoriti")) {
-    favoriti = JSON.parse(localStorage.getItem("favoriti"))
-    }
     ajaxCallBack("products.json", prikaziProizvode);
     ajaxCallBack("memory.json", prikaziMemorije);
     ajaxCallBack("brend.json", prikaziBrendove);
     
-    document.querySelectorAll(".favorite").forEach(function(el) {
-      el.addEventListener("click", function() {
-        if(el.classList.contains("fa-regular")) {
-          el.classList.remove("fa-regular")
-          el.classList.add("fa-solid")
-          favoriti.push(parseInt(el.dataset.id))
-        } else {
-          el.classList.add("fa-regular")
-          el.classList.remove("fa-solid")
-          localStorage.removeItem("favoriti");
-          let indexZaBrisanje = favoriti.indexOf(parseInt(el.dataset.id))
-          favoriti.splice(indexZaBrisanje, 1)
-  
-        }
-        localStorage.setItem("favoriti", JSON.stringify(favoriti));
-      })
-    })
 
     $("#sort").change(filterChange);
     $("#search").keyup(filterChange);
@@ -173,10 +152,6 @@ window.onload = function(){
 
   //ispis proizvoda
   function prikaziProizvode(sviProizvodi) {
-    let favoriti = []
-    if(localStorage.getItem("favoriti")) {
-      favoriti = JSON.parse(localStorage.getItem("favoriti"))
-    }
    sviProizvodi = filterByBrend(sviProizvodi);
    sviProizvodi = filterByRamMemory(sviProizvodi);
    sviProizvodi = sortiranje(sviProizvodi);
@@ -196,7 +171,6 @@ window.onload = function(){
                </h6>
                <h5 class="card-text">${ispisiCenu(el.price)}</h5>
                <p class="card-text">${ispisiZvezdice(el.stars)}</p>
-               <i class="${favoriti.includes(el.id) ? "fa-solid" : "fa-regular"} fa-heart favorite" data-id=${el.id}></i>
                <button type="button" class="btn btn-primary dugmeKorpa" data-id="${el.id}" data-bs-toggle="modal" data-bs-target="#cartModal">Dodaj u korpu</button>
              </div>
            </div>
