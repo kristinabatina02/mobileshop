@@ -122,7 +122,7 @@ window.onload = function(){
     }
 
     //ls za omiljene proizvode
-    let favoriti = []
+    var favoriti = []
     if(localStorage.getItem("favoriti")){
       favoriti = JSON.parse(localStorage.getItem("favoriti"))
     }
