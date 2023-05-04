@@ -121,6 +121,12 @@ window.onload = function(){
       ajaxCallBack("products.json", prikaziProizvode);
     }
 
+    //ls za omiljene proizvode
+    let favoriti = []
+    if(localStorage.getItem("favoriti")){
+      favoriti = JSON.parse(localStorage.getItem("favoriti"))
+    }
+
     //prikaz brendova
     function prikaziBrendove(sviProizvodi) {
       let html = "";
@@ -171,6 +177,7 @@ window.onload = function(){
                </h6>
                <h5 class="card-text">${ispisiCenu(el.price)}</h5>
                <p class="card-text">${ispisiZvezdice(el.stars)}</p>
+               <i class="${favoriti.includes(el.id) ? "fa-solid" : "fa-regular"} fa-heart favorite" data-id=${el.id}></i>
                <button type="button" class="btn btn-primary dugmeKorpa" data-id="${el.id}" data-bs-toggle="modal" data-bs-target="#cartModal">Dodaj u korpu</button>
              </div>
            </div>
@@ -210,6 +217,26 @@ window.onload = function(){
     }
     return html;
   }
+
+  //omiljeno
+  document.querySelectorAll(".favorite").forEach(function(el) {
+    el.addEventListener("click", function() {
+      if(el.classList.contains("fa-regular")) {
+        el.classList.remove("fa-regular")
+        el.classList.add("fa-solid")
+        favoriti.push(parseInt(el.dataset.id))
+      } else {
+        el.classList.add("fa-regular")
+        el.classList.remove("fa-solid")
+        localStorage.removeItem("favoriti");
+        let indexZaBrisanje = favoriti.indexOf(parseInt(el.dataset.id))
+        favoriti.splice(indexZaBrisanje, 1)
+
+      }
+      localStorage.setItem("favoriti", JSON.stringify(favoriti));
+    })
+  })
+
   //filtriranje po brendovima
   function filterByBrend(sviProizvodi){
     let selektovanBrend = [];
@@ -462,14 +489,14 @@ function kupi(){
       objPoruka.addEventListener("blur",function(){
           proveraRegularnihIzraza(rePoruka,objPoruka);
       })
-  var dugme = document.getElementById("btn");
-  dugme.addEventListener("click", kontaktObrada);
-  function kontaktObrada(){
-      var greske = 0;
-      greske += proveraRegularnihIzraza(reIme,objIme);
-      greske += proveraRegularnihIzraza(reEmail,objEmail);
-      greske += proveraRegularnihIzraza(reNaslov,objNaslov);
-      greske += proveraRegularnihIzraza(rePoruka,objPoruka);
+      var dugme = document.getElementById("btn");
+      dugme.addEventListener("click", kontaktObrada);
+      function kontaktObrada(){
+        var greske = 0;
+        greske += proveraRegularnihIzraza(reIme,objIme);
+        greske += proveraRegularnihIzraza(reEmail,objEmail);
+        greske += proveraRegularnihIzraza(reNaslov,objNaslov);
+        greske += proveraRegularnihIzraza(rePoruka,objPoruka);
       
       if(!greske){
           dugme.nextElementSibling.classList.remove("sakrijUspesno");
