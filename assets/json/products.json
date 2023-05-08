@@ -1,7 +1,7 @@
 [
  {
   "id" : 1,
-  "name" : "APPLE Iphone 14 Plus 6/128GB Purple",
+  "name" : "APPLE Iphone 14 6/128GB Purple",
   "image":{
    "src":"../img/iphone1.jpg",
    "alt":"iphone 14"
@@ -166,7 +166,7 @@
  },
  {
   "id" : 12,
-  "name" : "REALME 9 Pro 6/128GB Glowing Green",
+  "name" : "REALME 9 Pro 6/128GB Green",
   "image":{
    "src":"../img/realme4.png",
    "alt":"realme 9 pro"
